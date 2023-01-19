@@ -32,10 +32,10 @@ router.post("/signup", async (req, res) => {
       const verification = await bcrypt.compare(password, user.password);
     //   console.log(verification)
       if (user && verification) {
-        const token=jwt.sign({name:user.name},"SECRET1234")
-        return res.send({message:"Login Success",token})
+        const token=jwt.sign({email:user.email},"SECRET1234")
+        return res.send({message:"Login Successful",token})
       } else {
-        res.send("Invalid credentials");
+        res.send("Invalid Credentials");
       }
     } catch (error) {
       res.send("User Not Found");
